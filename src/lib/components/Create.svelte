@@ -5,12 +5,18 @@
 	import { todoList } from "$lib/stores/todo.svelte";
 
 	let text = $state("");
+
+	function addTodo() {
+		todoList().addTodo(text);
+		text = "";
+	}
 </script>
 
-<div class="flex">
+<form class="flex">
 	<Button
+		type="submit"
 		class="rounded-l-md rounded-r-none h-16 text-xl bg-cyan-800 text-white hover:bg-green-800"
-		onclick={() => todoList().addTodo(text)}>Add Todo</Button
+		onclick={() => addTodo()}>Add Todo</Button
 	>
 	<Input
 		placeholder="Enter your todo"
@@ -18,4 +24,4 @@
 		class="bg-cyan-50 text-black rounded-l-none	rounded-r-md border-none outline-none text-xl h-16
 		placeholder:opacity-80 placeholder:text-cyan-900 placeholder:font-medium"
 	/>
-</div>
+</form>

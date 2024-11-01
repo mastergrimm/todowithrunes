@@ -23,13 +23,13 @@
 						out:send={{ key: todo.id }}
 						animate:flip={{ duration: 300 }}
 					>
-						<div class="flex items-center gap-4">
+						<label class="flex items-center gap-4 cursor-pointer">
 							<input
 								type="checkbox"
 								bind:checked={todo.completed}
 							/>
 							<div class="list__text">{todo.text}</div>
-						</div>
+						</label>
 						<button
 							class="bg-red-400 opacity-60 hover:opacity-100 p-2 rounded-md"
 							onclick={() => todoList().removeTodo(todo.id)}
@@ -54,13 +54,13 @@
 						out:send={{ key: todo.id }}
 						animate:flip={{ duration: 300 }}
 					>
-						<div class="flex items-center gap-4">
+						<label class="flex items-center gap-4 cursor-pointer">
 							<input
 								type="checkbox"
 								bind:checked={todo.completed}
 							/>
 							<div class="list__text">{todo.text}</div>
-						</div>
+						</label>
 						<button
 							class="bg-red-400 opacity-60 hover:opacity-100 p-2 rounded-md"
 							onclick={() => todoList().removeTodo(todo.id)}
@@ -79,6 +79,10 @@
 		@apply text-2xl text-white font-medium;
 	}
 
+	p {
+		@apply my-8;
+	}
+
 	.list {
 		@apply flex flex-col gap-4 mt-5;
 	}
@@ -88,6 +92,10 @@
 	}
 
 	.list__item--completed {
-		@apply opacity-50;
+		@apply opacity-50 hover:opacity-100 transition-all duration-300;
+	}
+
+	input[type="checkbox"] {
+		transform: scale(1.5);
 	}
 </style>

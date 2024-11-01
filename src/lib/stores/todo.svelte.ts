@@ -48,7 +48,6 @@ export function todoList() {
 		});
 	}
 
-
 	function removeTodo(id: number) {
 		todos = todos.filter(todo => todo.id !== id);
 	}

@@ -2,9 +2,9 @@
 	import Create from "$lib/components/Create.svelte";
 	import List from "$lib/components/List.svelte";
 
-	import { createTodoList } from "$lib/stores/todo.svelte";
+	import { todoList } from "$lib/stores/todo.svelte";
 
-	const todos = createTodoList();
+	const todos = todoList();
 
 	$effect(() => {
 		$inspect(todos);
@@ -18,6 +18,6 @@
 			Created using Svelte Rune Stores
 		</div>
 	</div>
-	<Create {...todos} />
-	<List {...todos} />
+	<Create />
+	<List />
 </div>

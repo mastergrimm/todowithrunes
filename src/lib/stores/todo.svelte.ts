@@ -37,9 +37,9 @@ const TodoExample = [
 	}
 ]
 
-export function createTodoList() {
-	let todos: Todo[] = $state(TodoExample);
+let todos: Todo[] = $state(TodoExample);
 
+export function todoList() {
 	function addTodo(text: string) {
 		todos.push({
 			id: todos.length + 1,

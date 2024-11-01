@@ -6,18 +6,17 @@
 	import { flip } from "svelte/animate";
 	import { send, receive } from "$lib/transition";
 	import type { Todo } from "$lib/stores/todo.svelte";
-
-	let todos = $props();
+	import { todoList } from "$lib/stores/todo.svelte";
 </script>
 
 <div class="flex justify-between gap-10">
 	<div class="flex-1">
 		<h2>Current Todos</h2>
-		{#if todos.length === 0}
+		{#if todoList().currentTodos.length === 0}
 			<p>No todos yet</p>
 		{:else}
 			<div class="list">
-				{#each todos.currentTodos as todo (todo.id)}
+				{#each todoList().currentTodos as todo (todo.id)}
 					<div
 						class="list__item"
 						in:receive={{ key: todo.id }}
@@ -33,7 +32,7 @@
 						</div>
 						<button
 							class="bg-red-400 opacity-60 hover:opacity-100 p-2 rounded-md"
-							onclick={() => todos.removeTodo(todo.id)}
+							onclick={() => todoList().removeTodo(todo.id)}
 						>
 							<Trash2 />
 						</button>
@@ -44,11 +43,11 @@
 	</div>
 	<div class="flex-1">
 		<h2>Completed Todos</h2>
-		{#if todos.length === 0}
+		{#if todoList().completedTodos.length === 0}
 			<p>No completed todos yet</p>
 		{:else}
 			<div class="list">
-				{#each todos.completedTodos as todo (todo.id)}
+				{#each todoList().completedTodos as todo (todo.id)}
 					<div
 						class="list__item list__item--completed"
 						in:receive={{ key: todo.id }}
@@ -64,7 +63,7 @@
 						</div>
 						<button
 							class="bg-red-400 opacity-60 hover:opacity-100 p-2 rounded-md"
-							onclick={() => todos.removeTodo(todo.id)}
+							onclick={() => todoList().removeTodo(todo.id)}
 						>
 							<Trash2 />
 						</button>
